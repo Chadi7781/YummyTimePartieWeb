@@ -1,0 +1,180 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Gestion des restaurants</h4>
+          <div class="wrap">
+            <div class="search">
+              <input type="text" class="searchTerm" placeholder="Rechercher..." [(ngModel)]="term">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-description">
+            <button class="btn btn-outline-primary btn-rounded btn-f " data-toggle="modal" data-target="#add">Ajouter un nouveau restaurant
+              <i class="mdi mdi-plus"></i>
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table _ngcontent-c-4="" class="table table-bordered">
+              <thead>
+              <tr>
+                <th>
+                  image
+                </th>
+                <th>
+                  Nom
+                </th>
+                <th>
+                  Status
+                </th>
+                <th>
+                  Autre
+                </th>
+                <th>
+                  Modifier
+                </th>
+                <th>
+                  Supprimer
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let resto of listerestaurant">
+                <td>
+                  <img src="http://localhost:8080/restaurants/images/{{resto.image}}" style="width: 50px">
+                </td>
+                <td>
+                  {{resto.name}}
+                </td>
+                <td>
+                  <label class="badge badge-danger" *ngIf="resto.etat === true" (click)="Bloquer(resto._id)"  >Bloquer</label>
+                  <label class="badge badge-success"  *ngIf="resto.etat === false"(click)="Debloquer(resto._id)">Debloquer</label>
+                </td>
+
+
+                <td>
+                  <a routerLink="/home/details/{{resto._id}}">tous les informations</a>
+                </td>
+                <td><a data-toggle="modal" data-target="#edit" (click)="recuper(resto._id,resto.name,resto.adress,resto.openingTime,adress.closingTime)">
+                  <i class="fa fa-edit" style="font-size:16px"></i></a>
+                </td>
+                <td>
+                  <i class="fa fa-trash" style="font-size:16px" (click)="OnDelete(resto._id)"></i>
+                </td>
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="add">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Ajouter un nouveau restaurant</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> Nom restaurant</label>
+                  <input type="text" class="form-control" placeholder="Enter le nom" name="restaurant.name" [(ngModel)]="this.restaurant.name">
+                </div>
+
+                <form class="forms-sample">
+                  <div class="form-group">
+                    <label> Ville restaurant</label>
+                    <input type="text" class="form-control" placeholder="Enter le ville" name="restaurant.city" [(ngModel)]="this.restaurant.city">
+                  </div>
+                <div class="form-group">
+                  <label>temps d'ouverture</label>
+                  <div class="toggle-example">
+                    <input type="text" class="form-control" placeholder="Enter le temps" name="restaurant.openingTime" [(ngModel)]="this.restaurant.openingTime">
+
+                    <!--<ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>-->
+                    <!--<input type="text" class="form-control-plaintext"[ngxTimepicker]="toggleTimepicker" [disableClick]="true"   placeholder="ouverture" name="restaurant.openingTime" [ngModel]="this.restaurant.openingTime" #toggleTimepicker>-->
+                    <!--<ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>-->
+                  <!--</div>-->
+                </div>
+                </div>
+
+                <div class="form-group">
+                  <label>temps de fermeture</label>
+                  <input type="text" class="form-control" placeholder="Enter le temps" name="restaurant.closingTime" [(ngModel)]="this.restaurant.closingTime">
+
+                  <!--<div class="toggle-example">-->
+                    <!--<ngx-material-timepicker-toggle [for]="toggleTimepicker1"></ngx-material-timepicker-toggle>-->
+                    <!--<input type="text" class="form-control-plaintext"  [ngxTimepicker]="toggleTimepicker1" [disableClick]="true"   placeholder="fermeture" name="restaurant.closingTime" #toggleTimepicker1 >-->
+                    <!--<ngx-material-timepicker #toggleTimepicker1 ></ngx-material-timepicker>-->
+                  <!--</div>-->
+                </div>
+                  <div class="form-group">
+                  <label> Latitude restaurant</label>
+                  <input type="text" class="form-control" placeholder="Latitude" name="restaurant.lat" [(ngModel)]="this.restaurant.lat">
+                </div>
+                <div class="form-group">
+                  <label> Longitude restaurant </label>
+                  <input type="text" class="form-control" placeholder="Longitude" name="restaurant.lng" [(ngModel)]="this.restaurant.lng">
+                </div>
+                <div class="form-group">
+                  <label> Localisation restaurant</label>
+                  <input type="text" class="form-control" placeholder="Enter localisation" name="restaurant.location" [(ngModel)]="this.restaurant.location">
+                </div>
+
+                <div class="form-group">
+                  <label> numero de telephone restaurant</label>
+                  <input type="text" class="form-control" placeholder="Enter numero de telephone" name="restaurant.phone" [(ngModel)]="this.restaurant.phone">
+                </div>
+                  <div class="form-group">
+                    <label> Cuisine</label>
+                    <select type="text" class="form-control"  name="restaurant.cuisine" [(ngModel)]="this.restaurant.cuisine">
+                      <option type="text" name="f">Francaise</option>
+                      <option type="text" value="a">Arabe</option>
+                      <option type="text" value="i">Italienne</option>
+                    </select>
+                  </div>
+
+                  <form class="forms-sample">
+                    <div class="form-group">
+                      <label> Nombre des tables</label>
+                      <input type="text" class="form-control" placeholder="nombre des tables" name="restaurant.nombre_table" [(ngModel)]="this.restaurant.nombre_table">
+                    </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+                  </form>
+                </form>
+              </form>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary btn-rounded btn-fw"  data-dismiss="modal"  (click)="add()">Enregistrer</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+

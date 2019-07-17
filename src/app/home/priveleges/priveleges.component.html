@@ -1,0 +1,168 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Privelege </h4>
+          <p class="card-description">
+            <button class="btn btn-inverse-primary btn-rounded btn-fw " data-toggle="modal" data-target="#add">Ajouter un role
+              <i class="mdi mdi-plus"></i>
+            </button>
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>
+                  Role
+                </th>
+                <th>
+                  Create
+                </th>
+                <th>
+                  Read
+                </th>
+                <th>
+                  Update
+                </th>
+                <th>
+                  Delete
+                </th>
+                <th style="color:#00a855;">
+                  Modification
+                </th>
+                <td style="color: #a90707">
+                  Suppression
+                </td>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  Chef d'agence
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                1
+                </td>
+                <td><a data-toggle="modal" data-target="#edit" (click)="recuper(off._id,off.titre,off.desc_off,off.date_expiration)">
+                  <i class="fa fa-edit" style="font-size:36px"></i></a>
+
+                </td>
+                <td>
+                  <i class="fa fa-trash" style="font-size:36px" (click)="OnDelete(off._id)"></i>
+                </td>
+
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class=" example-modal ">-->
+  <!--<div class="modal modal-primary" id="add">-->
+    <!--<div class="modal-dialog">-->
+      <!--<div class="modal-content">-->
+        <!--<div class="modal-header">-->
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
+            <!--aria-hidden="true">&times;</span></button>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+
+          <!--<form role="form">-->
+            <!--<div class="box-body">-->
+              <!--<h5>Ajouter un nouveau offre</h5>-->
+              <!--<br>-->
+              <!--<form class="forms-sample">-->
+                <!--<div class="form-group">-->
+                  <!--<label> Image offre</label>-->
+                  <!--<input type="file" class="form-control" placeholder="Choisissez une image" name="offre.image"(change)="postMethod($event.target.files)" [(ngModel)]="this.offre.image">-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                  <!--<label> Titre offre</label>-->
+                  <!--<input type="text" class="form-control" placeholder="Enter le titre" name="offre.titre" [(ngModel)]="this.offre.titre">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label> description offre</label>-->
+                  <!--<input type="text" class="form-control" placeholder="ajouter une description" name="offre.desc_off" [(ngModel)]="this.offre.desc_off">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label> date d'expiration </label>-->
+                  <!--<input type="date" class="form-control" placeholder="choisissez une date d'expiration " name="offre.date_expiration" [(ngModel)]="this.offre.date_expiration">-->
+                <!--</div>-->
+
+              <!--</form>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+          <!--<button class="btn btn-outline-primary btn-rounded btn-fw"  data-dismiss="modal"  (click)="add()">Enregistrer</button>-->
+          <!--<button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>-->
+        <!--</div>-->
+      <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+  <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--</div>-->
+<!--<div class=" example-modal ">-->
+  <!--<div class="modal modal-primary" id="edit">-->
+    <!--<div class="modal-dialog">-->
+      <!--<div class="modal-content">-->
+        <!--<div class="modal-header">-->
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
+            <!--aria-hidden="true">&times;</span></button>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+
+          <!--<form role="form">-->
+            <!--<div class="box-body">-->
+              <!--<h5>Modifier client</h5>-->
+              <!--<br>-->
+              <!--<form class="forms-sample">-->
+                <!--<div class="form-group">-->
+                  <!--<label>Image offre</label>-->
+                  <!--<input type="file" class="form-control" (change)="postMethod($event.target.files)">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label> Titre offre</label>-->
+                  <!--<input type="text" class="form-control" placeholder="Enter le titre " [(ngModel)]="this.offre.titre"-->
+                         <!--name="offre.titre">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label>Description offre</label>-->
+                  <!--<input type="text" class="form-control" placeholder="Enter la description " [(ngModel)]="this.offre.desc_off"-->
+                         <!--name="offre.desc_off">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label> Date d'expiration offre</label>-->
+                  <!--<input type="date" class="form-control" placeholder="Enter le date d'expiration" [(ngModel)]="this.offre.date_expiration"-->
+                         <!--name="offre.date_expiration">-->
+                <!--</div>-->
+
+              <!--</form>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+          <!--<button  class="btn btn-outline-primary btn-rounded btn-fw" data-dismiss="modal" (click)="OnUpdate()">mise a jour</button>-->
+          <!--<button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>-->
+        <!--</div>-->
+      <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+  <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--</div>-->

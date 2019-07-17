@@ -1,0 +1,104 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Gestion des Categories</h4>
+          <p class="card-description">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>
+                  Nom Responsable
+                </th>
+
+                <th>
+                  consulter tous les informations
+                </th>
+                <th>
+                Acceptation/Refuser
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let d of listdemandes">
+                <td>
+                </td>
+                <td>
+                  {{d.nom_respo}}
+                </td>
+
+                <td>
+                  <i class="fa fa-trash-o"></i>
+                </td>
+                <td>
+
+                <td><a data-toggle="modal" data-target="#edit">
+                  <i class="fa fa-pencil"></i></a>
+
+                </td>
+
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="edit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Modifier catégorie</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> Nom catégorie</label>
+                  <input type="text" class="form-control" placeholder="Modifier le nom" [(ngModel)]="this.categorie.nom"
+                         name="categorie.nom">
+                </div>
+                <div class="form-group">
+                  <label>Image1</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+
+              </form>
+
+            </div>
+
+
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button  class="btn btn-outline-primary btn-rounded btn-fw" data-dismiss="modal" (click)="OnUpdate()">mise a jour</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>&lt;!&ndash; /.modal-content &ndash;&gt;
+    </div>&lt;!&ndash; /.modal-dialog &ndash;&gt;
+  </div>&lt;!&ndash; /.modal &ndash;&gt;
+</div>
+-->

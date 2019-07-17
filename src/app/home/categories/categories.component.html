@@ -1,0 +1,417 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Gestion des Categories</h4>
+          <div class="wrap">
+            <div class="search">
+              <input type="text" class="searchTerm" placeholder="Rechercher..." [(ngModel)]="term">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-description">
+            <button class="btn btn-outline-primary btn-rounded btn-f " data-toggle="modal" data-target="#add">Ajouter un nouveau categorie
+              <i class="mdi mdi-plus"></i>
+            </button>
+          </div>
+
+
+          <div class="table-responsive">
+            <table _ngcontent-c-4="" class="table table-bordered">
+              <thead>
+              <tr _ngcontent-c-3>
+                <th>
+                  Titre
+                </th>
+                <th>
+                  image
+                </th>
+                <th>
+                 Ajouter Sous catégorie
+                </th>
+                <th>
+                  Modifier
+                </th>
+                <th>
+                  Supprimer
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let c of listcategories  | paginate:config | search : term ; let i=index" ngcontent-c5="" >
+                <td>
+                {{c.titre}}
+                </td>
+                <td>
+                  <img src="http://localhost:8080/categories/images/{{c.image}}" style="width: 50px">
+                </td>
+                <td>
+                  <button class="btn btn-twitter btn-block" routerLink="/home/souscategorie/{{c._id}}">Consulter
+
+                  </button>
+                </td>
+
+                <td><a data-toggle="modal" data-target="#edit" (click)="recuper(c._id,c.titre,c.image)">
+                  <i class="fa fa-pencil"></i></a>
+
+                </td>
+                <td>
+                  <i class="fa fa-trash-o" (click)="OnDelete(c._id)"></i>
+                </td>
+
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="add">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Ajouter un nouveau catégorie</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> Nom catégorie</label>
+                  <input type="text" class="form-control" placeholder="Enter le titre" name="categorie.titre" [(ngModel)]="this.categorie.titre">
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+              </form>
+            </div>
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary btn-rounded btn-fw"  data-dismiss="modal"  (click)="add()">Enregistrer</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="edit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Modifier catégorie</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> Nom catégorie</label>
+                  <input type="text" class="form-control" placeholder="Modifier le titre" [(ngModel)]="this.categorie.titre"
+                         name="categorie.titre">
+                </div>
+                <div class="form-group">
+                  <label>Image1</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+
+              </form>
+
+            </div>
+
+
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button  class="btn btn-outline-primary btn-rounded btn-fw" data-dismiss="modal" (click)="OnUpdate()">mise a jour</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Plats de  jours</h4>
+          <div class="wrap">
+            <div class="search">
+              <input type="text" class="searchTerm" placeholder="Rechercher..." [(ngModel)]="term">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-description">
+            <button class="btn btn-outline-primary btn-rounded btn-f " data-toggle="modal" data-target="#add2">Ajouter un nouveau Plat de jour
+              <i class="mdi mdi-plus"></i>
+            </button>
+          </div>
+
+
+          <div class="table-responsive">
+            <table _ngcontent-c-4="" class="table table-bordered">
+              <thead>
+              <tr _ngcontent-c-3>
+                <th>
+                  Nom
+                </th>
+                <th>
+                  image
+                </th>
+                <th>
+                  prix
+                </th>
+                <th>
+                  Modifier
+                </th>
+                <th>
+                  Supprimer
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let c of listcategories  | paginate:config | search : term ; let i=index" ngcontent-c5="" >
+                <td>
+                  kosksi allouch
+                </td>
+                <td>
+                  <img src="http://localhost:8080/categories/images/{{c.image}}" style="width: 50px">
+                </td>
+                <td>
+                  25D
+                </td>
+
+                <td><a data-toggle="modal" data-target="#edit" (click)="recuper(c._id,c.titre)">
+                  <i class="fa fa-pencil"></i></a>
+
+                </td>
+                <td>
+                  <i class="fa fa-trash-o" (click)="OnDelete(c._id)"></i>
+                </td>
+
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="add1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Ajouter un nouveau sous catégorie</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> titre </label>
+                  <input type="text" class="form-control" placeholder="Enter le titre" name="categorie.titre" [(ngModel)]="this.categorie.titre">
+                </div>
+
+                <div class="form-group">
+                  <label> prix </label>
+                  <input type="text" class="form-control" placeholder="Enter le prix" name="categorie.prix" [(ngModel)]="this.categorie.id">
+                </div>
+                <div class="form-group">
+                  <label>image</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+              </form>
+            </div>
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary btn-rounded btn-fw"  data-dismiss="modal"  (click)="add()">Enregistrer</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- **-->
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="add2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Ajouter un nouveau plat de jours</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> Nom </label>
+                  <input type="text" class="form-control" placeholder="Enter le nom" name="categorie.titre" [(ngModel)]="this.categorie.titre">
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+              </form>
+            </div>
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary btn-rounded btn-fw"  data-dismiss="modal"  (click)="add()">Enregistrer</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+<div class=" example-modal ">
+  <div class="modal modal-primary" id="edit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div class="box-body">
+              <h5>Modifier catégorie</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label> Nom catégorie</label>
+                  <input type="text" class="form-control" placeholder="Modifier le titre" [(ngModel)]="this.categorie.titre"
+                         name="categorie.titre">
+                </div>
+                <div class="form-group">
+                  <label>Image1</label>
+                  <input type="file" class="form-control" (change)="postMethod($event.target.files)">
+                </div>
+
+              </form>
+
+            </div>
+
+
+          </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="modal-footer">
+          <button  class="btn btn-outline-primary btn-rounded btn-fw" data-dismiss="modal" (click)="OnUpdate()">mise a jour</button>
+          <button class="btn btn-outline-light btn-rounded btn-fw" data-dismiss="modal">Annuler</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>

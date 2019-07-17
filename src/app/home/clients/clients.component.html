@@ -1,0 +1,84 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Consulter les comptes</h4>
+
+          <div class="container h-100">
+            <div class="wrap"  style="text-align: center">
+                <div class="search">
+                  <input type="text" class="searchTerm" placeholder="Rechercher..." [(ngModel)]="term" >
+                  <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+
+          <p class="card-description">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+
+          </p>
+
+          <div class="table-responsive">
+            <table _ngcontent-c5="" class="table table-bordered">
+              <thead _ngcontent-c5="">
+              <tr ngcontent-c5="">
+                <th ngcontent-c5="">
+                  Nom
+                </th>
+                <th ngcontent-c5="">
+                  email
+                </th>
+                <th ngcontent-c5="">
+                  Numero telephone
+                </th>
+                <th ngcontent-c5="">
+                  Status
+                </th>
+                <th ngcontent-c5="">
+                  Supprimer
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let c of listclients |  paginate:config|search : term ; let i=index" ngcontent-c5="" >
+
+                <td ngcontent-c5="">
+                {{c.nom}}
+                </td>
+                <td ngcontent-c5="">
+                  {{c.email}}
+                </td>
+                <td ngcontent-c5="">
+                  {{c.numero_telephone}}
+                </td>
+                <td ngcontent-c5="">
+                  <i class="fa fa-check"></i>
+
+                </td>
+                <td ngcontent-c5="">
+                  <i class="fa fa-trash-o" (click)="OnDelete(c._id)"></i>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

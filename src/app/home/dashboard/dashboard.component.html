@@ -1,0 +1,121 @@
+
+<div class="content-wrapper">
+  <div class="row">
+
+
+    <div class="container">
+      <h2 class="font-weight-semibold" style="text-align:center; ">Bienvenue</h2>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        </ol>
+
+
+
+          <div class="item">
+            <img src="../../../assets/images/par3.jpg" alt="Los Angeles" style="width:100%;">
+          </div>
+        </div>
+
+
+
+    <div class="main-panel mx-auto">
+      <div class="row" >
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-account-location text-info icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Clients</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{listeclient?.length}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-account-location text-info icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Réservations</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{listereservation?.length}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-account-location text-info icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Offres</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{listeoffre?.length}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-account-location text-info icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Restaurants</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{listerestaurant?.length}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Réservations</h4>
+            <canvas id="lineChart" style="height:250px"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Réclamations</h4>
+            <canvas id="barChart" style="height:230px"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>

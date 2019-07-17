@@ -1,0 +1,19 @@
+<div class="container-scroller">
+  <!-- partial:partials/_navbar.html -->
+  <app-topbar></app-topbar>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper ">
+    <!-- partial:partials/_sidebar.html -->
+<app-sidebar></app-sidebar>
+    <!-- partial -->
+    <div class="main-panel">
+      <!-- content-wrapper ends -->
+<router-outlet></router-outlet>
+      <!-- partial:partials/_footer.html -->
+<app-footer></app-footer>
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>

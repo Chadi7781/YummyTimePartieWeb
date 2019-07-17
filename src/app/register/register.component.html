@@ -1,0 +1,103 @@
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+    <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+      <div class="row w-100">
+        <div class="col-lg-4 mx-auto">
+          <h2 class="text-center mb-4" style="color: #ffffff">Inscription</h2>
+          <div class="auto-form-wrapper">
+
+
+            <!--début formulaire-->
+
+
+            <form [formGroup]="registerForm" (ngSubmit)="go()">
+
+              <div class="form-group">
+                <label>Nom responsable</label>
+                <input type="text" formControlName="nom" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.nom.errors }" />
+                <div *ngIf="submit&& f.nom.errors" class="invalid-feedback">
+                  <div *ngIf="f.nom.errors.required">Nom doit etre non vide</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>nom restaurant</label>
+                <input type="text" formControlName="nom_resto" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.nom_resto.errors }" />
+                <div *ngIf="submit && f.nom_resto.errors" class="invalid-feedback">
+                  <div *ngIf="f.nom_resto.errors.required">Nom restaurant doit etre non vide</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="label">Email</label>
+                <input type="email" formControlName="email" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.email.errors }" />
+                <div *ngIf="submit && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email doit etre non vide </div>
+                  <div *ngIf="f.email.errors.email">Email doit etre valide</div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label class="label">Numero de telephone</label>
+                <input type="text" formControlName="numero_telephone" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.numero_telephone.errors }" />
+                <div *ngIf="submit && f.numero_telephone.errors" class="invalid-feedback">
+                  <div *ngIf="f.numero_telephone.errors.required">
+                    <div *ngIf="f.numero_telephone.errors.number">Numero de telephone doit etre non vide</div>
+                    Numero telephone doit etre valide</div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label class="label">Adresse</label>
+                <input type="text" formControlName="adress" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.adress.errors }" />
+                <div *ngIf="submit && f.adress.errors" class="invalid-feedback">
+                  <div *ngIf="f.adress.errors.required">
+                    <div *ngIf="f.adress.errors.email">Adresse invalide</div>
+                    Adresse doit etre non vide
+                </div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" formControlName="password" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.password.errors }" />
+                <div *ngIf="submit && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Mot de passe doit etre non vide</div>
+                  <div *ngIf="f.password.errors.minlength">Mot de passe doit etre 8 caractère au minimum</div>
+                </div>
+              </div>
+
+              <br>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" formControlName="confirmPassword" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.confirmPassword.errors }" />
+                <div *ngIf="submit && f.confirmPassword.errors" class="invalid-feedback">
+                  <div *ngIf="f.confirmPassword.errors.required">Confirmer votre mot de passe </div>
+                  <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe doit etre identique</div>
+                </div>
+              </div>
+              <!--fin formulaire-->
+              <div class="form-group">
+                <button class="btn btn-primary"  type="submit">Se connecter</button>
+              </div>
+            </form>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->

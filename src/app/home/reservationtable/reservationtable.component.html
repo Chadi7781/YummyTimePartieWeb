@@ -1,0 +1,117 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Gestion des Reservations</h2>
+
+
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>
+                  Nom Client
+                </th>
+                <th>
+                  Date Reservation
+                </th>
+                <th>
+                  nombre Personne
+                </th>
+                <th>
+                  statut
+                </th>
+
+                <th>
+                  Modifier
+                </th>
+                <th>
+                  Supprimer
+                </th>
+
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let res of listeresvartion">
+                  <td>
+                    {{res.client.nom}}
+                  </td>
+                <td>
+                  {{res.date_reservation |date:'dd/MM/yyyy'}}
+                </td>
+                <td>
+                  {{res.nombrePersonne}}
+                </td>
+                <td>
+                  <label class="badge badge-warning">Créer</label>
+                </td>
+
+
+                <td>
+                 <a data-toggle="modal" data-target="#edit" (click)="recuper(r._id,r.nombrePersonne,r.date_res)"><i class="fa fa-edit" style="font-size:16px"></i></a>
+                </td>
+                <td>
+                  <i class="fa fa-trash" style="font-size:16px" (click)="OnDelete(r._id)"></i>
+                </td>
+              </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class=" example-modal " >
+  <div class="modal modal-primary" id="edit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form">
+            <div classz="box-body">
+              <h5>Modifier reservation</h5>
+              <br>
+              <form class="forms-sample">
+                <div class="form-group">
+                  <label > Date de reservation </label>
+                  <input type="date" class="form-control"  placeholder="Enter le date de reservation" [(ngModel)]="this.reservation.date_res" name="reservation.date_res">
+                </div>
+                <div class="form-group">
+                  <label > Nombre de personne </label>
+                  <input type="text" class="form-control"  placeholder="Enter le personne ">
+                </div>
+
+
+
+
+
+              </form>
+
+            </div>
+
+
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success mr-2" (click)="OnUpdate()">Enregistrer</button>
+          <button class="btn btn-light"  data-dismiss="modal" >Annuler</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+

@@ -1,0 +1,106 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img src="../../../assets/images/faces/avatar2user.png" alt="profile image">
+          </div>
+          <div class="text-wrapper" >
+            <p class="profile-name">{{user.email}}</p>
+
+            <div>
+              <small class="designation text-muted">{{user.role.nom}}</small>
+              <span class="status-indicator online"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="home">
+        <i class="menu-icon  fa fa-home"></i>
+        <span class="menu-title">Acceuill</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item"  *ngIf="role!='respnsable'">
+      <a class="nav-link" routerLink="privelege">
+        <i class="menu-icon  fa fa-users"></i>
+        <span class="menu-title">Privileges</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item"  *ngIf="role!='respnsable'">
+      <a class="nav-link" routerLink="client">
+        <i class="menu-icon  fa fa-users"></i>
+        <span class="menu-title">Consuler les Comptes</span>
+      </a>
+    </li>
+    <li class="nav-item"  *ngIf="role!='respnsable'">
+      <a class="nav-link" routerLink="categorie">
+        <i class="menu-icon fa fa-glass"></i>
+        <span class="menu-title">Gestion menus et Catégorie</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item"  *ngIf="role!='admin'">
+      <a class="nav-link" routerLink="mesResto">
+        <i class="menu-icon fa fa-glass"></i>
+        <span class="menu-title">mesResto</span>
+      </a>
+    </li>
+
+
+    <!--<li class="nav-item" *ngIf="role!='respnsable'">-->
+      <!--<a class="nav-link" routerLink="menus">-->
+        <!--<i class="menu-icon fa fa-list-alt"></i>-->
+        <!--<span class="menu-title">Gestion des Menus</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <li class="nav-item"  *ngIf="role!='respnsable'">
+      <a class="nav-link"  routerLink="offre">
+        <i class="menu-icon fa fa-gift"></i>
+        <span class="menu-title">Gestion des Offres</span>
+      </a>
+    </li>
+    <li class="nav-item"  *ngIf="role!='respnsable'">
+      <a class="nav-link" routerLink="reclamation">
+        <i class="menu-icon fa fa-comments"></i>
+        <span class="menu-title">Gestion des Réclamations</span>
+      </a>
+    </li>
+
+    <li class="nav-item"  *ngIf="role!='respnsable'">
+      <a class="nav-link" routerLink="restaurant">
+        <i class="menu-icon fa fa-cutlery"></i>
+        <span class="menu-title">Gestion des Restaurants</span>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf="role!='admin'">
+      <a class="nav-link" routerLink="tables">
+        <i class="menu-icon fa fa-table"></i>
+        <span class="menu-title" >Gestion disponibilité tables</span>
+      </a>
+    </li>
+
+    <li class="nav-item"  *ngIf="role!='admin'">
+      <a class="nav-link" routerLink="reservation" >
+        <i class="menu-icon fa fa-book"></i>
+        <span class="menu-title">Gestion des réservations</span>
+      </a>
+    </li>
+
+    <li class="nav-item"  *ngIf="role!='admin'">
+      <a class="nav-link" routerLink="reclamer" >
+        <i class="menu-icon fa fa-warning"></i>
+        <span class="menu-title">Envoyer réclamtion</span>
+      </a>
+    </li>
+  </ul>
+</nav>

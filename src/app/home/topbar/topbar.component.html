@@ -1,0 +1,82 @@
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row p-0 m-0">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+    <a class="navbar-brand-wrapper brand-logo" routerLink="dashboard">
+      <img src="../../../assets/images/transparent.png" alt="logo" style="width: 60px;height: 60px" />
+    </a>
+    <a class="navbar-brand brand-logo-mini" routerLink="dashboard">
+     <img src="../../../assets/images/transparent.png" alt="logo" style="width: 30px;height: 30px"/>
+    </a>
+
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center">
+    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+       </ul>
+    <ul class="navbar-nav navbar-nav-right">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+          <i class="mdi mdi-bell"></i>
+          <span class="count">{{responsabletab?.length}}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+          <a class="dropdown-item">
+            <p class="mb-0 font-weight-normal float-left">Vous avez 3 notifications
+            </p>
+            <span class="badge badge-pill badge-warning float-right">lire tous</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item" *ngFor="let u of responsabletab">
+            <div>
+            <i class="fa fa-check" (click)="getApprouver(u._id)"></i>
+            <i class="fa fa-trash-o" (click)="OnDelete(u._id)"></i>
+            </div>
+
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-success">
+                <i class="mdi mdi-alert-circle-outline mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-medium text-dark">{{u.nom}}</h6>
+              <p class="font-weight-light small-text">
+                Just now
+              </p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+          <span class="profile-text"> </span>
+          <i class ="fa fa-gear bg-transparent"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+          <a class="dropdown-item p-0">
+            <div class="d-flex border-bottom">
+              <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+              </div>
+              <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+              </div>
+              <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+              </div>
+            </div>
+          </a>
+          <a class="dropdown-item mt-2">
+          </a>
+          <a class="dropdown-item">
+
+          </a>
+          <a class="dropdown-item" (click)="deconnexion()">
+            Deconnecter
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+      <span class="mdi mdi-menu"></span>
+    </button>
+  </div>
+</nav>

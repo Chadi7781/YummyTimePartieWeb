@@ -1,0 +1,59 @@
+
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+    <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+      <div class="row w-100">
+        <div class="col-lg-4 mx-auto">
+          <div class="auto-form-wrapper">
+            <form [formGroup]="loginForm" (ngSubmit)="go()">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="votre email" formControlName="email" class="form-control"
+                       [ngClass]="{ 'is-invalid': submit && f.email.errors }" />
+                <div *ngIf="submit && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email doit etre non vide</div>
+                  <div *ngIf="f.email.errors.email">email invalide
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" placeholder="votre mot de passe" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submit && f.password.errors }" />
+                <div *ngIf="submit && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Mot de passe doit etre non vide</div>
+                  <div *ngIf="f.password.errors.minlength">Mot de passe doit etre 8 caractère au minimum</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary submit-btn btn-block"  type="submit" routerLink="">Login</button>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-link btn-fw" routerLink="/register">Inscrivez vous</button>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-link btn-fw" routerLink="/oublierMotPasse">Oublier mot de passe</button>
+              </div>
+              <div class="text-block text-center my-3">
+                <span class="text-small font-weight-semibold"></span>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../vendors/js/vendor.bundle.base.js"></script>
+<script src="../../vendors/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../js/off-canvas.js"></script>
+<script src="../../js/misc.js"></script>
+<!-- endinject -->
+
